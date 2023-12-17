@@ -1,0 +1,14 @@
+{
+  "name": "bit",
+  "version": "1.0.0",
+  "description": "Implementation of Git in JS",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rouak-stha",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2"
+  }
+}
