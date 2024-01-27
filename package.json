@@ -1,18 +1,19 @@
 {
-  "name": "bit",
-  "version": "1.0.0",
-  "description": "Implementation of Git in JS",
-  "main": "app/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Rouak-stha",
-  "license": "ISC",
-  "dependencies": {
-    "chalk": "^4.1.2"
-  },
-  "devDependencies": {
-    "eslint": "^8.56.0",
-    "prettier": "3.1.1"
-  }
+    "name": "bit",
+    "version": "1.0.0",
+    "description": "Implementation of Git in JS",
+    "main": "app/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Rouak-stha",
+    "license": "ISC",
+    "dependencies": {
+        "arg": "^5.0.2",
+        "chalk": "^4.1.2"
+    },
+    "devDependencies": {
+        "eslint": "^8.56.0",
+        "prettier": "3.1.1"
+    }
 }
