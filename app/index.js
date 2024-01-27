@@ -128,7 +128,7 @@ function main() {
             catFile(ARGS)
 			break
 		case 'hash-object':
-			hashObject()
+            hashObject(ARGS)
 			break
 		case 'getOType':
 			const [dirName, fileName] = getDirAndFileName()
