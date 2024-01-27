@@ -125,7 +125,7 @@ function main() {
 			createGitDirectory()
 			break
 		case 'cat-file':
-			catFile()
+            catFile(ARGS)
 			break
 		case 'hash-object':
 			hashObject()
