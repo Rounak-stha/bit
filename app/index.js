@@ -130,9 +130,8 @@ function main() {
 		case 'hash-object':
             hashObject(ARGS)
 			break
-		case 'getOType':
-			const [dirName, fileName] = getDirAndFileName()
-			getObjectType(zlib.inflateSync(getGitFileContents(dirName, fileName)).toString().split('\x00')[1])
+        case 'write-tree':
+            writeTree()
 			break
 		default:
 			throw new Error(`Unknown command ${command}`)
