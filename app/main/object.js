@@ -2,8 +2,6 @@ const zlib = require('node:zlib')
 const crypto = require('crypto')
 const { readObjectContent, createGitObject } = require('../helpers')
 
-const shasum = crypto.createHash('sha1')
-
 const FILE_MODE_TO_TYPE = {
     100644: 'blob',
     '040000': 'tree',
@@ -54,6 +52,7 @@ const BlobObject = {
      * @returns {{serializedData: Buffer, hash: string}}
      */
     serialize(data) {
+        const shasum = crypto.createHash('sha1')
         const dataLength = data.length
         const formattedData = `blob ${dataLength}\0${data}`
         const serializedData = GitObject.serialize(formattedData)
@@ -77,7 +76,7 @@ const BlobObject = {
      * @returns {string}
      */
     extractContent(data) {
-        const deserializedData = data.subarray(data.indexOf('\0'))
+        const deserializedData = data.subarray(data.indexOf('\0') + 1)
         return deserializedData.toString()
     },
 }
@@ -102,6 +101,7 @@ const TreeObject = {
      * @returns {{serializedData: Buffer, hash: string}}
      */
     serialize(data) {
+        const shasum = crypto.createHash('sha1')
         this.sortEntries(data)
         const entries = Buffer.concat(
             data.map((entry) => {
@@ -120,6 +120,16 @@ const TreeObject = {
         const serializedData = GitObject.serialize(treeData)
 
         return { serializedData, hash }
+    },
+
+    /**
+     * Returns the Contents of the Tree Data Held by the Tree Object
+     * @param {Buffer} data
+     * @returns {string}
+     */
+    deserialize(data) {
+        const decompressedContents = GitObject.deserialize(data)
+        return this.extractContent(decompressedContents)
     },
 
     /**
